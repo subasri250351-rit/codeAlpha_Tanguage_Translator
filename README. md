@@ -1,0 +1,21 @@
+# Language Translation Tool
+
+## Description
+A language translation application that converts text from one language to another using a translation API.
+
+## Features
+- Enter text for translation
+- Select source and target languages
+- Display translated text
+- Simple user interface
+
+## Technologies Used
+- Python
+- Translation API
+
+## How to Run
+Install required libraries:
+pip install -r requirements.txt
+
+Run the application:
+python app.py
