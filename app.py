@@ -1,5 +1,5 @@
 import streamlit as st
-from googletrans import Translator
+import requests
 
 st.title("Language Translation Tool")
 
@@ -9,6 +9,18 @@ source = st.text_input("Source language code (example: en)")
 target = st.text_input("Target language code (example: ta)")
 
 if st.button("Translate"):
-    translator = Translator()
-    result = translator.translate(text, src=source, dest=target)
-    st.success(result.text)
+    url = "https://translate.googleapis.com/translate_a/single"
+
+    params = {
+        "client": "gtx",
+        "sl": source,
+        "tl": target,
+        "dt": "t",
+        "q": text
+    }
+
+    response = requests.get(url, params=params)
+    result = response.json()
+
+    translated = result[0][0][0]
+    st.success(translated)
