@@ -1,5 +1,5 @@
 import streamlit as st
-from deep_translator import GoogleTranslator
+from googletrans import Translator
 
 # Page settings
 st.set_page_config(page_title="Language Translation Tool", page_icon="🌍")
@@ -35,10 +35,8 @@ if st.button("Translate"):
         st.warning("Source and Target languages cannot be the same.")
     else:
         try:
-            translated_text = GoogleTranslator(
-                source=languages[source_language],
-                target=languages[target_language]
-            ).translate(text)
+            translator=Translator()
+            translated=translator.translate(text,src=source,dest=target).text
 
             st.success("Translation Successful!")
             st.subheader("Translated Text")
